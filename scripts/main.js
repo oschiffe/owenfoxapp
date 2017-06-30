@@ -32,7 +32,7 @@ module.exports = function(bot){
 	});
 
 	bot.respond(/When were you created?/i, function(res) {
-		return res.send("Hmm, according to my records, it seems I've been around since July 2016! ¯\_(ツ)_/¯");
+		return res.send("Hmm, according to my, it seems I've been around since July 2016! ¯\_(ツ)_/¯");
 	});	
 //Multiplication function
 	bot.respond(/multiply (.) and (.)/i, function(msg) {
@@ -49,12 +49,19 @@ module.exports = function(bot){
   	return res.reply("I'm dandy thanks!");
 });
 //Ask if we have class and bot will respond!
-	bot.hear(/Do we have class today?/i, function(res) {
+	bot.hear(/Do we have work today?/i, function(res) {
 		if (today == 'Monday') {
 			return res.send('Yes! because today is ' + today);
 		} else if (today == 'Wednesday') {
 			return res.send('Yes! because today is ' + today);
-		} else {
+		} else if (today == 'Thursday') {
+			return res.send('Yes! because today is ' + today);
+		} else if (today == 'Friday') {
+			return res.send('Yes! because today is ' + today);
+		} else if (today == 'Tuesday') {
+			return res.send('Yes! because today is ' + today);
+		} 
+		else {
 			return res.send('No :,( because today is ' + today);
 		};
 	})
