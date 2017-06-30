@@ -30,7 +30,11 @@ module.exports = function(bot){
 	bot.hear(/What's the weather?/i, function(res) {
 		return res.send("It's hot out today in Boston");
 	});
-
+//Fave color
+	bot.hear(/What's your favorite color?/i, function(res) {
+		return res.send("Aquamarine my guy");
+	});
+//Creation
 	bot.respond(/When were you created?/i, function(res) {
 		return res.send("Hmm, according to my records, it seems I've been around since July 2016! ¯\_(ツ)_/¯");
 	});	
@@ -48,6 +52,42 @@ module.exports = function(bot){
 	bot.respond(/Hey bot, how ya doing?/i, function(res) {
   	return res.reply("I'm dandy thanks!");
 });
+
+	var HtmlParser, Select, animalMe, randimalMe;
+
+Select = require("soupselect").select;
+
+HtmlParser = require("htmlparser");
+
+module.exports = function(robot) {
+  return robot.respond(/animal me/i, function(msg) {
+    return randimalMe(msg, function(url) {
+      return msg.send(url);
+    });
+  });
+};
+
+randimalMe = function(msg, cb) {
+  return msg.http("http://animalsbeingdicks.com/random").get()(function(err, res, body) {
+    console.log(res.headers.location);
+    return animalMe(msg, res.headers.location, function(location) {
+      return cb(location);
+    });
+  });
+};
+
+animalMe = function(msg, location, cb) {
+  return msg.http(location).get()(function(err, res, body) {
+    var handler, img, parser;
+    handler = new HtmlParser.DefaultHandler();
+    parser = new HtmlParser.Parser(handler);
+    parser.parseComplete(body);
+    img = Select(handler.dom, "#content .post .entry img");
+    console.log(img);
+    return cb(img[0].attribs.src);
+  });
+};
+
 //Ask if we have class and bot will respond!
 	bot.hear(/Do we have class today?/i, function(res) {
 		if (today == 'Monday') {
