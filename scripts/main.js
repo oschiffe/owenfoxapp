@@ -27,11 +27,11 @@ module.exports = function(bot){
 	});
 //Future ideas__Fetch weather, ex. "Whats the weather in Boston"
 //"It's sunny and 91 degrees in Boston today, tuesday the 19th"
-	bot.hear(/What's the weather?/i, function(res) {
+	bot.respond(/What's the weather?/i, function(res) {
 		return res.send("It's hot out today in Boston");
 	});
 //Fave color
-	bot.hear(/What's your favorite color?/i, function(res) {
+	bot.respond(/What's your favorite color?/i, function(res) {
 		return res.send("Aquamarine my guy");
 	});
 //Creation
