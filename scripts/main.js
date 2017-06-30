@@ -32,7 +32,7 @@ module.exports = function(bot){
 	});
 
 	bot.respond(/When were you created?/i, function(res) {
-		return res.send("Hmm, according to my records, it seems I've been around since July 2016! ¯\_(ツ)_/¯");
+		return res.send("Hmm, according to my MOM, it seems I've been around since July 2016! ¯\_(ツ)_/¯");
 	});	
 //Multiplication function
 	bot.respond(/multiply (.) and (.)/i, function(msg) {
