@@ -23,7 +23,7 @@ module.exports = function(bot){
 	});
 	
 	bot.hear(/Hello!/i, function(res) {
-		return res.send('Hi there sir!');
+		return res.send('Sah!');
 	});
 //Future ideas__Fetch weather, ex. "Whats the weather in Boston"
 //"It's sunny and 91 degrees in Boston today, tuesday the 19th"
